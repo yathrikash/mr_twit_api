@@ -31,7 +31,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
             //Collection.InsertOne(data );
         }
 
-        public virtual IEnumerable<T> Get(Guid userId)
+        public virtual IEnumerable<T> Get(string userId)
         {
             return null;
         }

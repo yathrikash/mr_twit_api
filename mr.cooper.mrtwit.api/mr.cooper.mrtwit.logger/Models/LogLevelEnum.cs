@@ -6,6 +6,7 @@ namespace mr.cooper.mrtwit.logger.Models
 {
     public class LogLevelEnum
     {
+        
     }
 
     public enum LogLevel

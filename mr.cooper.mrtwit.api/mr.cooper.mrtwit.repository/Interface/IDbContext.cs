@@ -10,7 +10,7 @@ namespace mr.cooper.mrtwit.repository
     {
           void Add(T data);
 
-        IEnumerable<T> Get(Guid userId);
+        IEnumerable<T> Get(string userId);
 
         void Update(T updatedData);
 

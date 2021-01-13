@@ -15,19 +15,16 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
             
         }
         
-        
-
 
         public  override void Add(Profile data)
         {
             Collection.InsertOne(data);
         }
 
-        public override   IEnumerable<Profile> Get(Guid userId)
+        public override   IEnumerable<Profile> Get(string userId)
         {
          return  Collection.Find<Profile>(x => x.UserId == userId).ToEnumerable();
         }
-
 
 
         public override void Update(Profile updatedData)

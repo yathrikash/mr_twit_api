@@ -11,14 +11,14 @@ namespace mr.cooper.mrtwit.services.Interface
         void AddProfile(Profile profileInfro);
 
         
-        IList<Guid> GetFollowers(Guid userId);
+        IList<string> GetFollowers(string userId);
 
-        IList<Guid> GetFollowings(Guid userId);
+        IList<string> GetFollowings(string userId);
 
-        void AddFollower(Guid userId,Guid followerId);
+        void AddFollower(string userId,string followerId);
 
-        void AddFollowing(Guid userId, Guid followingId);
-        Profile GetProfile(Guid userId);
+        void AddFollowing(string userId, string followingId);
+        Profile GetProfile(string userId);
 
 
     }

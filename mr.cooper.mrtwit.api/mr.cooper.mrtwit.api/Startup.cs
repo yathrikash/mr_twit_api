@@ -8,6 +8,9 @@ using Microsoft.Extensions.Options;
 using mr.cooper.mrtwit.logger.Concrete;
 using mr.cooper.mrtwit.logger.Models;
 using mr.cooper.mrtwit.models.Configuration;
+using NLog;
+using NLog.Fluent;
+using NLog.Web;
 using System.Linq;
 
 namespace mr.cooper.mrtwit.api
@@ -27,6 +30,10 @@ namespace mr.cooper.mrtwit.api
             services.AddHealthChecks();
 
             services.AddResponseCompression();
+           // var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            //logger.Log(NLog.LogLevel.Trace, "Prakash");
+            //services.AddSingleton(logger);
+           // var log = services.BuildServiceProvider().GetRequiredService<ILogger>();
 
             if (!services.Any(x => x.ServiceType == typeof(IMrLogger)))
             {
@@ -95,7 +102,7 @@ namespace mr.cooper.mrtwit.api
 
             //app.UseMvc();
 
-
+           
             app.UseRouting();
 
             app.UseAuthorization();

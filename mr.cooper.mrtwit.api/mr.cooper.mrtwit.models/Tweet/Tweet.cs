@@ -5,8 +5,9 @@ namespace mr.cooper.mrtwit.models.Tweet
 {
     public  class Tweet 
     {
+        public string _id { get; set; }
 
-        public Guid TweetId { get; set; }
+        public string TweetId { get; set; }
 
         public DateTime TweetedOn { get; set; }
 
@@ -15,7 +16,7 @@ namespace mr.cooper.mrtwit.models.Tweet
         public string ImageUrl { get; set; }
 
         public IList<Guid> Replies { get; set; }//Reply is an another Tweet
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         public IList<string> HashTags { get; set; }
         

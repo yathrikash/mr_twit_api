@@ -3,6 +3,7 @@ using mr.cooper.mrtwit.logger.Models;
 using mr.cooper.mrtwit.models;
 using mr.cooper.mrtwit.services.Interface;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,13 +26,56 @@ namespace mr.cooper.mrtwit.api.Controllers
         }
 
         [HttpGet]
-        [Route("profiles/{userId}")]
+        [Route("{userId}")]
         public  Profile Get(string userId)
         {
-            if (!Guid.TryParse(userId, out Guid tempUserId))
-                throw new ArgumentException($"Invalid Userid {userId}.");
+            _logger.Log(LogLevel.Info, $"Request received for get user: {userId}");
+            return _profileService.GetProfile(userId);
+        }
 
-            return _profileService.GetProfile(tempUserId);
+        [HttpGet]
+        [Route("{userId}/followers")]
+        public IList<string> GetFollower(string userId)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for get followers of user: {userId}");
+            return _profileService.GetFollowers(userId);
+        }
+
+        [HttpGet]
+        [Route("{userId}/followings")]
+        public IList<string> GetFollowings(string userId)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for get followings of user: {userId}");
+            return _profileService.GetFollowings(userId);
+        }
+
+
+        [HttpPost]
+        public IActionResult AddProfile([FromBody] Profile userInfo)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for add profile : {userInfo.Name}");
+            _profileService.AddProfile(userInfo);
+            return Ok();
+        }
+
+
+        [HttpPut]
+        [Route("{userId}/addfollower/{followerId}")]
+        public IActionResult AddFollower(string userId, string followerId)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for add follower:{followerId} for : {userId}");
+
+            _profileService.AddFollower(userId, followerId);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("{userId}/addfollowing/{followingId}")]
+        public IActionResult AddFollowing(string userId, string followingId)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for add follower:{followingId} for : {userId}");
+            _profileService.AddFollowing(userId, followingId);
+            return Ok();
         }
     }
 }

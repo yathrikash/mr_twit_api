@@ -20,7 +20,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             _dbContext = dbContext;
         }
 
-        public  void AddFollower(Guid userId, Guid followerId)
+        public  void AddFollower(string userId, string followerId)
         {
             try
             {
@@ -32,11 +32,13 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                     return;
                 }
                 if (profile.Followers== null)
-                    profile.Followers  = new List<Guid>();
+                    profile.Followers  = new List<string>();
 
-
-                profile.Followers.Add(followerId);
-                _dbContext.Update(profile);
+                if (!profile.Followers.Contains(followerId))
+                {
+                    profile.Followers.Add(followerId);
+                    _dbContext.Update(profile);
+                }
             }
             catch (Exception ex)
             {
@@ -46,7 +48,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             }
         }
 
-        public  void AddFollowing(Guid userId,Guid followingId)
+        public  void AddFollowing(string userId,string followingId)
         {
             try
             {
@@ -58,10 +60,12 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                     return;
                 }
                 if (profile.Followings == null)
-                    profile.Followings = new List<Guid>();
-
-                profile.Followings.Add(followingId);
-                _dbContext.Update(profile);
+                    profile.Followings = new List<string>();
+                if (!profile.Followings.Contains(followingId))
+                {
+                    profile.Followings.Add(followingId);
+                    _dbContext.Update(profile);
+                }
             }
             catch (Exception ex)
             {
@@ -75,7 +79,8 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
         {
             try
             {
-                profileInfro._id = Guid.NewGuid();
+                profileInfro._id = Guid.NewGuid().ToString();
+                profileInfro.ProfileId = Guid.NewGuid().ToString();
                 _dbContext.Add(profileInfro);
             }
             catch (Exception ex)
@@ -86,7 +91,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             }
         }
 
-        public IList<Guid> GetFollowers(Guid userId)
+        public IList<string> GetFollowers(string userId)
         {
             try
             {
@@ -101,7 +106,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             }
         }
 
-        public IList<Guid> GetFollowings(Guid userId)
+        public IList<string> GetFollowings(string userId)
         {
             try
             {
@@ -116,7 +121,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             }
         }
 
-        public  Profile GetProfile(Guid userId)
+        public  Profile GetProfile(string userId)
         {
             try
             {

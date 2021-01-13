@@ -21,6 +21,12 @@ namespace mr.cooper.mrtwit.api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+             .ConfigureLogging(logging =>
+             {
+                 logging.ClearProviders();
+                 logging.SetMinimumLevel(LogLevel.Trace);
+             });
+            
     }
 }

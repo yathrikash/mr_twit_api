@@ -8,5 +8,6 @@ namespace mr.cooper.mrtwit.services.Interface
     public interface IUserService
     {
         void AddUser(User userInfo);
+        User GetUser(string userId);
     }
 }

@@ -36,9 +36,9 @@ namespace mr.cooper.mrtwit.api.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var userId = Guid.NewGuid();
-            var followerId = Guid.NewGuid();
-            var followingId = Guid.NewGuid();
+            var userId = Guid.NewGuid().ToString();
+            var followerId = Guid.NewGuid().ToString();
+            var followingId = Guid.NewGuid().ToString();
             _profileService.AddProfile(new Profile
             {
                 Name = "Prakash",

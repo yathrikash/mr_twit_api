@@ -7,7 +7,9 @@ namespace mr.cooper.mrtwit.models.Tweet
 {
     public class Feed
     {
-        public Guid UserId { get; set; }
+        public string _id { get; set; }
+
+        public string UserId { get; set; }
 
         private IList<FeedContent> _feeds;
 
@@ -30,6 +32,6 @@ namespace mr.cooper.mrtwit.models.Tweet
 
         public DateTime TweetedOn { get; set; }
 
-        public Guid TweetId { get; set; }
+        public string  TweetId { get; set; }
     }
 }

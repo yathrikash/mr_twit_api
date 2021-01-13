@@ -1,4 +1,5 @@
 ﻿using mr.cooper.mrtwit.logger.Models;
+using NLog;
 
 namespace mr.cooper.mrtwit.logger.Concrete
 {

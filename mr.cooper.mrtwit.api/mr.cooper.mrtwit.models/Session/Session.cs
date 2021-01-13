@@ -11,6 +11,6 @@ namespace mr.cooper.mrtwit.models.Session
 
         public bool IsLoggedIn { get; set; }
 
-        public DateTime LastLoggedIn { get; set; }
+        public DateTime LastLoggedIn { get; set; } 
     }
 }

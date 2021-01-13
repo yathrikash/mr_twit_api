@@ -14,3 +14,4 @@ namespace mr.cooper.mrtwit.models.Session
         public DateTime LastLoggedIn { get; set; } 
     }
 }
+  

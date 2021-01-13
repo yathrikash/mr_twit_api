@@ -10,6 +10,7 @@ namespace mr.cooper.mrtwit.services
         public static IServiceCollection AddEssentialDependencies(IServiceCollection services)
         {
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IProfileService, ProfileService>();
             mr.cooper.mrtwit.repository.mongo.ServiceRegistry.AddEssentialDependencies(services);
 
            

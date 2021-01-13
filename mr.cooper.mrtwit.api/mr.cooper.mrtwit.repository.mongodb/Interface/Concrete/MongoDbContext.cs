@@ -5,6 +5,7 @@ using mr.cooper.mrtwit.models.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
 {
@@ -25,10 +26,20 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
 
         public IMongoCollection<T> Collection { get; private set; }
 
-        public void Add(T data)
+        public virtual void Add(T data)
         {
-            Collection.InsertOne(data );
+            //Collection.InsertOne(data );
         }
+
+        public virtual IEnumerable<T> Get(Guid userId)
+        {
+            return null;
+        }
+
+        public virtual void Update(T updatedData)
+        {
+           
+    }
 
         private void InitializeCollection(string collectionName)
         {

@@ -21,24 +21,37 @@ namespace mr.cooper.mrtwit.api.Controllers
         };
 
         private readonly IMrLogger _logger;
-        private readonly IUserService _userService;
+        private readonly IProfileService _profileService;
       
 
 
-        public WeatherForecastController(IMrLogger logger, IUserService userService)
+        public WeatherForecastController(IMrLogger logger, IProfileService profileService)
         {
+            
             _logger = logger;
-            _userService = userService;
+            _profileService = profileService;
            
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var userId = Guid.NewGuid();
+            var followerId = Guid.NewGuid();
+            var followingId = Guid.NewGuid();
+            _profileService.AddProfile(new Profile
+            {
+                Name = "Prakash",
+                Gender = GenderEnum.Male,
+                UserId = userId
+            });
 
-            _userService.AddUser(new User {UserName = "Prakash" });
+            _profileService.AddFollowing(userId,followingId);
+            _profileService.AddFollower(userId, followerId);
 
-
+            var followers = _profileService.GetFollowers(userId);
+            var followings = _profileService.GetFollowings(userId);
+            var profile = _profileService.GetProfile(userId);
                var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.api", "mr.cooper.mrtwit.api\mr.cooper.mrtwit.api.csproj", "{60023FC8-BCE5-4C4A-960A-19AE658E6BE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.models", "mr.cooper.mrtwit.models\mr.cooper.mrtwit.models.csproj", "{F7C0A043-9417-41C5-95F8-7E607C1C6958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.repository", "mr.cooper.mrtwit.repository\mr.cooper.mrtwit.repository.csproj", "{C0E89772-9057-4D85-9C39-6756C2FA07C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.logger", "mr.cooper.mrtwit.logger\mr.cooper.mrtwit.logger.csproj", "{A1BCEF6C-D95B-483E-856F-B4598CB83B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.repository.mongodb", "mr.cooper.mrtwit.repository.mongodb\mr.cooper.mrtwit.repository.mongodb.csproj", "{402BD4B4-2DE2-4D4B-BE04-DE4C50DBC16F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mr.cooper.mrtwit.services", "mr.cooper.mrtwit.services\mr.cooper.mrtwit.services.csproj", "{41045952-37F1-4616-B28F-29FA17169F51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60023FC8-BCE5-4C4A-960A-19AE658E6BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60023FC8-BCE5-4C4A-960A-19AE658E6BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60023FC8-BCE5-4C4A-960A-19AE658E6BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60023FC8-BCE5-4C4A-960A-19AE658E6BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C0A043-9417-41C5-95F8-7E607C1C6958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C0A043-9417-41C5-95F8-7E607C1C6958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C0A043-9417-41C5-95F8-7E607C1C6958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C0A043-9417-41C5-95F8-7E607C1C6958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E89772-9057-4D85-9C39-6756C2FA07C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E89772-9057-4D85-9C39-6756C2FA07C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E89772-9057-4D85-9C39-6756C2FA07C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E89772-9057-4D85-9C39-6756C2FA07C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1BCEF6C-D95B-483E-856F-B4598CB83B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1BCEF6C-D95B-483E-856F-B4598CB83B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1BCEF6C-D95B-483E-856F-B4598CB83B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1BCEF6C-D95B-483E-856F-B4598CB83B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402BD4B4-2DE2-4D4B-BE04-DE4C50DBC16F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402BD4B4-2DE2-4D4B-BE04-DE4C50DBC16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402BD4B4-2DE2-4D4B-BE04-DE4C50DBC16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402BD4B4-2DE2-4D4B-BE04-DE4C50DBC16F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41045952-37F1-4616-B28F-29FA17169F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41045952-37F1-4616-B28F-29FA17169F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41045952-37F1-4616-B28F-29FA17169F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41045952-37F1-4616-B28F-29FA17169F51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC09F163-B0D1-4433-8511-6B20FB6E2535}
+	EndGlobalSection
+EndGlobal

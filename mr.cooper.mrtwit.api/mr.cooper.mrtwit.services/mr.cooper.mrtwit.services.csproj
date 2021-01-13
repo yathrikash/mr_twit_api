@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\mr.cooper.mrtwit.logger\mr.cooper.mrtwit.logger.csproj" />
+    <ProjectReference Include="..\mr.cooper.mrtwit.models\mr.cooper.mrtwit.models.csproj" />
+    <ProjectReference Include="..\mr.cooper.mrtwit.repository.mongodb\mr.cooper.mrtwit.repository.mongodb.csproj" />
+  </ItemGroup>
+
+</Project>

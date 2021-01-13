@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\mr.cooper.mrtwit.models\mr.cooper.mrtwit.models.csproj" />
+    <ProjectReference Include="..\mr.cooper.mrtwit.repository\mr.cooper.mrtwit.repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.11.5" />
+  </ItemGroup>
+
+</Project>

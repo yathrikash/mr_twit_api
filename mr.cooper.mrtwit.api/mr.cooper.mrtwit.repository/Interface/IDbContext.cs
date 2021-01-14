@@ -12,7 +12,12 @@ namespace mr.cooper.mrtwit.repository
 
         IEnumerable<T> Get(string userId);
 
+
+        IEnumerable<T> Get(IList<string> userIds);
+
         void Update(T updatedData);
+
+        void Delete(string userId);
 
     }
 }

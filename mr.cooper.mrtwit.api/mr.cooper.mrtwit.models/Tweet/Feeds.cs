@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace mr.cooper.mrtwit.models.Tweet
+namespace mr.cooper.mrtwit.models
 {
     public class Feed
     {
@@ -11,18 +11,14 @@ namespace mr.cooper.mrtwit.models.Tweet
 
         public string UserId { get; set; }
 
-        private IList<FeedContent> _feeds;
-
-        public IList<FeedContent> Feeds
+        public IList<FeedContent> Feeds { get; set; } = new List<FeedContent>();
+        public IList<FeedContent> OrderedFeeds 
         {
             get
             {
-                return _feeds.OrderByDescending(x => x.TweetedOn).ToList();
+                return Feeds.OrderByDescending(x => x.TweetedOn).ToList();
             }
-            set
-            {
-                _feeds = value;
-            }
+           
         }
 
     }

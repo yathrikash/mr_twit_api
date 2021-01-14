@@ -13,11 +13,15 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
     {
         private readonly IMrLogger _logger;
         private readonly IDbContext<Profile> _dbContext;
+        private readonly IFeedService _feedService;
 
-        public ProfileService(IMrLogger logger, IDbContext<Profile> dbContext)
+        public ProfileService(IMrLogger logger, IDbContext<Profile> dbContext
+            ,IFeedService feedService
+            )
         {
             _logger = logger;
             _dbContext = dbContext;
+            this._feedService = feedService;
         }
 
         public  void AddFollower(string userId, string followerId)
@@ -66,6 +70,9 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                     profile.Followings.Add(followingId);
                     _dbContext.Update(profile);
                 }
+
+                //Add that i am following this user, so need to add to their followers list
+                this.AddFollower(followingId, userId);
             }
             catch (Exception ex)
             {
@@ -82,6 +89,10 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                 profileInfro._id = Guid.NewGuid().ToString();
                 profileInfro.ProfileId = Guid.NewGuid().ToString();
                 _dbContext.Add(profileInfro);
+
+                var feed = new Feed();
+                feed.UserId = profileInfro.UserId;
+                _feedService.AddFeed(feed);
             }
             catch (Exception ex)
             {

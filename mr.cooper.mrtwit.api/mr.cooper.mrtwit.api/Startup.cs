@@ -30,16 +30,16 @@ namespace mr.cooper.mrtwit.api
             services.AddHealthChecks();
 
             services.AddResponseCompression();
-           // var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            // var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             //logger.Log(NLog.LogLevel.Trace, "Prakash");
             //services.AddSingleton(logger);
-           // var log = services.BuildServiceProvider().GetRequiredService<ILogger>();
+            // var log = services.BuildServiceProvider().GetRequiredService<ILogger>();
 
-            if (!services.Any(x => x.ServiceType == typeof(IMrLogger)))
-            {
-                services.AddSingleton(LogProvider.GetLogger());
-            }
-
+            //if (!services.Any(x => x.ServiceType == typeof(IMrLogger)))
+            //{
+            //    services.AddSingleton(LogProvider.GetLogger());
+            //}
+            logger.ServiceRegistry.AddEssentialDependencies(services);
             //TODO: Needs to be refactored, for now it is consuming time to read dictionary from appsettings. if time permits do this
             services.AddSingleton<AppConfig>(x => new AppConfig
             {
@@ -51,7 +51,10 @@ namespace mr.cooper.mrtwit.api
                     CollectionNames = new CollectionDictionary
                     {
                         ["ProfileDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("ProfileDbCollectionName").Value,
-                        ["UserDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("UserDbCollectionName").Value
+                        ["UserDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("UserDbCollectionName").Value,
+                        ["TweetDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("TweetDbCollectionName").Value,
+                        ["SessionDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("SessionDbCollectionName").Value,
+                        ["FeedDbCollectionName"] = Configuration.GetSection("MongoConnection").GetSection("CollectionNames").GetSection("FeedDbCollectionName").Value
                     }
                 }
             });

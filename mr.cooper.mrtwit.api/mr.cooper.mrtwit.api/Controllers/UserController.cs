@@ -32,11 +32,39 @@ namespace mr.cooper.mrtwit.api.Controllers
 
 
         [HttpPost]
-        public IActionResult AddUser([FromBody] User userInfo)
+        public IActionResult AddUser([FromBody] UserWithProfile userInfo)
         {
-            _logger.Log(LogLevel.Info, $"Request received for add user: {userInfo.UserName}");
+            _logger.Log(LogLevel.Info, $"Request received for add user: {userInfo.UserInfo.UserName}");
             _userService.AddUser(userInfo);
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("signin")]
+
+        public IActionResult SignIn([FromBody] SignIn userInfo)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for sign in : {userInfo.UserName}");
+            var session = _userService.SignIn(userInfo);
+            return Ok(session);
+        }
+
+        [HttpPut]
+        [Route("signout")]
+        public IActionResult SignOut([FromBody] SignIn userInfo)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for sign out : {userInfo.UserName}");
+             _userService.SignOut(userInfo.UserName,userInfo.Device);
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("isValidUser")]
+        public IActionResult IsValidUser([FromBody] Session sessoinInfo)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for validate user  : {sessoinInfo.UserName}");
+           var res =  _userService.IsValidUser(sessoinInfo);
+            return Ok(res);
         }
 
     }

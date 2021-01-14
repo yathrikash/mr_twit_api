@@ -22,7 +22,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
 
         public override IEnumerable<User> Get(string userId)
         {
-            return Collection.Find<User>(x => x.UserId == userId).ToEnumerable();
+            return Collection.Find<User>(x => x.UserId == userId || x.UserName == userId).ToEnumerable();
         }
     }
 }

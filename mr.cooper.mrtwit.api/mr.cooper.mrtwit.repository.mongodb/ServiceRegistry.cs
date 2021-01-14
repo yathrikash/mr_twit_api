@@ -12,6 +12,12 @@ namespace mr.cooper.mrtwit.repository.mongo
         {
             services.AddSingleton<IDbContext<User>, UserDBContext>();
             services.AddSingleton<IDbContext<Profile>, ProfileDBContext>();
+            services.AddSingleton<IDbContext<Tweet>, TweetDBContext>();
+            services.AddSingleton<IDbContext<Feed>, FeedDBContext>();
+            services.AddSingleton<IDbContext<Session>, SessionDBContext>();
+
+
+
             return services;
         }
     }

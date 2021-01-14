@@ -11,8 +11,10 @@ namespace mr.cooper.mrtwit.services
         {
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IProfileService, ProfileService>();
-            mr.cooper.mrtwit.repository.mongo.ServiceRegistry.AddEssentialDependencies(services);
+            services.AddSingleton<ITweetService, TweetService>();
+            services.AddSingleton<IFeedService, FeedService>();
 
+            mr.cooper.mrtwit.repository.mongo.ServiceRegistry.AddEssentialDependencies(services);
            
             return services;
         }

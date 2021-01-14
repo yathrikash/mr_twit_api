@@ -36,6 +36,16 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
             return null;
         }
 
+        public virtual IEnumerable<T> Get(IList<string> userIds)
+        {
+            return null;
+        }
+
+        public virtual void Delete(string userId)
+        {
+
+        }
+
         public virtual void Update(T updatedData)
         {
            

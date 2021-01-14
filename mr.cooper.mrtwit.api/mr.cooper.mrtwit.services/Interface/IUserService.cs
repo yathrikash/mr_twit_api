@@ -1,13 +1,15 @@
 ﻿using mr.cooper.mrtwit.models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace mr.cooper.mrtwit.services.Interface
 {
     public interface IUserService
     {
-        void AddUser(User userInfo);
+        void AddUser(UserWithProfile userInfo);
         User GetUser(string userId);
+        Session SignIn(SignIn userInfo);
+        bool IsValidUser(Session session);
+
+        void SignOut(string userName, string deveice);
+        
     }
 }

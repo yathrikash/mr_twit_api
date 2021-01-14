@@ -20,6 +20,7 @@
     "mr.cooper.mrtwit.api": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "ping",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

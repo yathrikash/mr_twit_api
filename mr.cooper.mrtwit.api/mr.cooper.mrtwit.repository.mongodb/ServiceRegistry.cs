@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using mr.cooper.mrtwit.models;
 using mr.cooper.mrtwit.repository.mongodb.Interface.Concrete;
-using System;
 
 namespace mr.cooper.mrtwit.repository.mongo
 {
-   public static class ServiceRegistry
+    public static class ServiceRegistry
     {
 
         public static IServiceCollection AddEssentialDependencies(IServiceCollection services)

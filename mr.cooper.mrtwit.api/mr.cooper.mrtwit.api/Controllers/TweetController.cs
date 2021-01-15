@@ -56,9 +56,19 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IActionResult ReplyTweet(string tweetId, [FromBody]Tweet reply)
         {
             _logger.Log(LogLevel.Info, $"Request received for reply to :{tweetId} from : {reply?.UserId}");
-            _tweetService.ReplyTweet(tweetId,reply);
+            _tweetService.ReplyTweet(tweetId,reply.Content);
             return Ok();
         }
+
+        [HttpPost]
+        [Route("reply/{tweetId}")]
+        public IActionResult ReplyTweetContent(string tweetId, [FromBody] Tweet reply)
+        {
+            _logger.Log(LogLevel.Info, $"Request received for reply to :{tweetId} from : {reply?.UserId}");
+            _tweetService.ReplyTweet(tweetId, reply.Content);
+            return Ok();
+        }
+
 
 
         [HttpPost]

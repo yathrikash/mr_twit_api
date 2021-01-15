@@ -1,4 +1,5 @@
 ﻿using mr.cooper.mrtwit.models;
+using System.Collections.Generic;
 
 namespace mr.cooper.mrtwit.services.Interface
 {
@@ -6,6 +7,8 @@ namespace mr.cooper.mrtwit.services.Interface
     {
         void AddUser(UserWithProfile userInfo);
         User GetUser(string userId);
+
+        IList<string> GetUser();
         Session SignIn(SignIn userInfo);
         bool IsValidUser(Session session);
 

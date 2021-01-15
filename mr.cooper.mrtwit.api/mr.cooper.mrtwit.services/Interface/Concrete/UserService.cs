@@ -2,6 +2,7 @@
 using mr.cooper.mrtwit.models;
 using mr.cooper.mrtwit.repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace mr.cooper.mrtwit.services.Interface.Concrete
@@ -55,6 +56,20 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             try
             {
                 return _dbContext.Get(userName)?.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(LogLevel.Info, "Something went wrong while fetching user.");
+                _logger.Log(LogLevel.Error, ex);
+                throw;
+            }
+        }
+
+        public IList<string> GetUser()
+        {
+            try
+            {
+                return _dbContext.Get("")?.Select(x=>x.UserId).ToList();
             }
             catch (Exception ex)
             {

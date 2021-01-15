@@ -2,6 +2,7 @@
 using mr.cooper.mrtwit.logger.Models;
 using mr.cooper.mrtwit.models;
 using mr.cooper.mrtwit.services.Interface;
+using System.Collections.Generic;
 
 namespace mr.cooper.mrtwit.api.Controllers
 {
@@ -29,6 +30,18 @@ namespace mr.cooper.mrtwit.api.Controllers
 
             return _userService.GetUser(userId);
         }
+
+
+
+        [HttpGet]
+        [Route("")]
+        public IList<string> Get()
+        {
+            _logger.Log(LogLevel.Info, $"Request received for get all user");
+
+            return _userService.GetUser();
+        }
+
 
 
         [HttpPost]

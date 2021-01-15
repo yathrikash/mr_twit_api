@@ -25,19 +25,45 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
             this._profileService = profileService;
         }
 
-        public  void ReplyTweet(string tweetId,Tweet replyTweet)
+        //public  void ReplyTweet(string tweetId,Tweet replyTweet)
+        //{
+        //    try
+        //    {
+        //       var tweet = _dbContext.Get(tweetId)?.FirstOrDefault();
+        //        replyTweet._id = Guid.NewGuid().ToString();
+        //        replyTweet.TweetId = Guid.NewGuid().ToString();
+        //        tweet.Likes = 0;
+        //        tweet.TweetedOn = DateTime.Now;
+        //        tweet.HashTags = tweet.Content?.Replace("  ", " ")?.Split(' ')?.Where(x => x?.StartsWith('#') == true)?.Select(x => x)?.ToList();
+        //        replyTweet.Type = MrTwitEnums.TweetType.Reply;
+
+        //        _dbContext.Add(replyTweet);
+
+        //        if (tweet == null)
+        //        {
+        //            _logger.Log(LogLevel.Warning, "Tweet not found, cannot add replies.");
+        //            return;
+        //        }
+        //        if (tweet.Replies == null)
+        //            tweet.Replies = new List<string>();
+        //        if (!tweet.Replies.Contains(replyTweet.Content))
+        //        {
+        //            tweet.Replies.Add(replyTweet.Content);
+        //            _dbContext.Update(tweet);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.Log(LogLevel.Error, "Something went wrong while following.");
+        //        _logger.Log(LogLevel.Error, ex);
+        //        throw;
+        //    }
+        //}
+        public void ReplyTweet(string tweetId, string reply)
         {
             try
             {
-               var tweet = _dbContext.Get(tweetId)?.FirstOrDefault();
-                replyTweet._id = Guid.NewGuid().ToString();
-                replyTweet.TweetId = Guid.NewGuid().ToString();
-                tweet.Likes = 0;
-                tweet.TweetedOn = DateTime.Now;
-                tweet.HashTags = tweet.Content?.Replace("  ", " ")?.Split(' ')?.Where(x => x?.StartsWith('#') == true)?.Select(x => x)?.ToList();
-                replyTweet.Type = MrTwitEnums.TweetType.Reply;
-              
-                _dbContext.Add(replyTweet);
+                var tweet = _dbContext.Get(tweetId)?.FirstOrDefault();
 
                 if (tweet == null)
                 {
@@ -46,11 +72,9 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                 }
                 if (tweet.Replies == null)
                     tweet.Replies = new List<string>();
-                if (!tweet.Replies.Contains(replyTweet.TweetId))
-                {
-                    tweet.Replies.Add(replyTweet.TweetId);
+                
+                    tweet.Replies.Add(reply);
                     _dbContext.Update(tweet);
-                }
             }
             catch (Exception ex)
             {
@@ -59,6 +83,9 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                 throw;
             }
         }
+
+
+
 
         public void AddTweet(Tweet tweet)
         {
@@ -95,6 +122,11 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
 
                 _feedService.AddFeed(feed);
             }
+            var feedOwn = _feedService.GetFeed(userId);
+            if (feedOwn == null) return;
+            feedOwn.Feeds.Add(new FeedContent { TweetedOn = tweet.TweetedOn, TweetId = tweet.TweetId });
+
+            _feedService.AddFeed(feedOwn);
         }
 
         public IList<Tweet> GetTweet(IList<string> tweetIds)

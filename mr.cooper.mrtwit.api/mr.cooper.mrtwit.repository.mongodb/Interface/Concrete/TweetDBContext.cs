@@ -36,7 +36,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
         /// <returns></returns>
         public override IEnumerable<Tweet> Get(IList<string> ids)
         {
-            return Collection.Find<Tweet>(x => ids.Contains(x.UserId )|| ids.Contains(x.TweetId))?.ToEnumerable();
+            return Collection.Find<Tweet>(x => ids.Contains(x.UserId) || ids.Contains(x.TweetId))?.ToEnumerable();
         }
 
 

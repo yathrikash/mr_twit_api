@@ -91,7 +91,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
                 _dbContext.Add(profileInfro);
 
                 var feed = new Feed();
-                feed.UserId = profileInfro.UserId;
+                feed.UserId = profileInfro.UserId?.ToLower();
                 _feedService.AddFeed(feed);
             }
             catch (Exception ex)

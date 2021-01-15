@@ -91,6 +91,7 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
         {
             try
             {
+                tweet.UserId = tweet.UserId?.ToLower();
                 tweet._id = Guid.NewGuid().ToString();
                 tweet.TweetId  = Guid.NewGuid().ToString();
                 tweet.Likes = 0;

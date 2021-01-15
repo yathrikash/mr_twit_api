@@ -18,7 +18,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
         
         public override void Add(Session data)
         {
-            var session = this.Get(data.UserId)?.Where(x=>x.Device == data.Device)?.FirstOrDefault();
+            var session = this.Get(data.UserId)?.Where(x=>x.Device== data.Device)?.FirstOrDefault();
             if (session == null)
                 Collection.InsertOne(data);
             else
@@ -50,7 +50,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
 
         public override void Delete(string sessionId)
         {
-            Collection.DeleteMany(x => x.SessionId == sessionId);
+            Collection.DeleteMany(x => x.SessionId== sessionId);
         }
 
         public override IEnumerable<Session> Get(string userId)

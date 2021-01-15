@@ -32,7 +32,8 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
         {
             try
             {
-                userInfo.UserInfo.UserId = Guid.NewGuid().ToString();
+                //userInfo.UserInfo.UserId = Guid.NewGuid().ToString();
+                userInfo.UserInfo.UserId = userInfo.UserInfo.UserName.ToLower();
                 userInfo.UserInfo.CreatedOn = DateTime.Now;
                 userInfo.UserInfo._id = Guid.NewGuid().ToString();
                 _dbContext.Add(userInfo.UserInfo);
@@ -82,16 +83,21 @@ namespace mr.cooper.mrtwit.services.Interface.Concrete
         public Session SignIn(SignIn userInfo)
         {
             var userDbDetails = this.GetUser(userInfo.UserName);
+         
             var userSession = new Session() {
                 AuthKey = userInfo.Password,
                 Device = userInfo.Device,
                 LastLoggedIn = DateTime.Now,
                 SessionId = Guid.NewGuid().ToString(),
                 _id = Guid.NewGuid().ToString(),
-                UserId = userDbDetails.UserId,
-                UserName = userDbDetails.UserName
+                UserId = userDbDetails?.UserId?.ToLower(),
+                UserName = userDbDetails?.UserName
             };
-
+            if (userDbDetails == null)
+            {
+                userSession.AuthKey = "";
+                return userSession;
+            }
             _dbSessionContext.Add(userSession);
             return userSession;
         }

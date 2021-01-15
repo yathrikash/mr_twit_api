@@ -18,7 +18,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
         
         public override void Add(Feed data)
         {
-            var feed = this.Get(data.UserId)?.FirstOrDefault();
+            var feed = this.Get(data.UserId.ToLower())?.FirstOrDefault();
             if (feed == null)
                 Collection.InsertOne(data);
             else

@@ -27,7 +27,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         {
             _logger.Log(LogLevel.Info, $"Request received for get user: {userId}");
 
-            return _feedService.GetFeed(userId);
+            return _feedService.GetFeed(userId?.ToLower());
         }
 
 

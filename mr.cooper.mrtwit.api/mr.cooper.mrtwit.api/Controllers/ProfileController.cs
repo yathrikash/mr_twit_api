@@ -30,7 +30,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public  Profile Get(string userId)
         {
             _logger.Log(LogLevel.Info, $"Request received for get user: {userId}");
-            return _profileService.GetProfile(userId);
+            return _profileService.GetProfile(userId?.ToLower());
         }
 
         [HttpGet]
@@ -38,7 +38,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IList<string> GetFollower(string userId)
         {
             _logger.Log(LogLevel.Info, $"Request received for get followers of user: {userId}");
-            return _profileService.GetFollowers(userId);
+            return _profileService.GetFollowers(userId?.ToLower());
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IList<string> GetFollowings(string userId)
         {
             _logger.Log(LogLevel.Info, $"Request received for get followings of user: {userId}");
-            return _profileService.GetFollowings(userId);
+            return _profileService.GetFollowings(userId?.ToLower());
         }
 
 
@@ -65,7 +65,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         {
             _logger.Log(LogLevel.Info, $"Request received for add follower:{followerId} for : {userId}");
 
-            _profileService.AddFollower(userId, followerId);
+            _profileService.AddFollower(userId?.ToLower(), followerId?.ToLower());
             return Ok();
         }
 
@@ -74,7 +74,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IActionResult AddFollowing(string userId, string followingId)
         {
             _logger.Log(LogLevel.Info, $"Request received for add follower:{followingId} for : {userId}");
-            _profileService.AddFollowing(userId, followingId);
+            _profileService.AddFollowing(userId?.ToLower(), followingId?.ToLower());
             return Ok();
         }
     }

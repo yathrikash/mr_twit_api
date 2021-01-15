@@ -14,11 +14,11 @@ namespace mr.cooper.mrtwit.models
 
         public  GenderEnum Gender { get; set; }
 
-        public IList<string> Followings { get; set; } 
+        public IList<string> Followings { get; set; } = new List<string>();
 
-        public IList<string> Followers { get; set; }
+        public IList<string> Followers { get; set; } = new List<string>();
 
-        public string ProfileImageUrl { get; set; }
+        public string ProfileImageUrl { get; set; } = string.Empty;
 
         public string _id { get; set; }
 

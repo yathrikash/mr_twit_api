@@ -24,7 +24,7 @@ namespace mr.cooper.mrtwit.repository.mongodb.Interface.Concrete
         {
             if (string.IsNullOrEmpty(userId))
                 return Collection.Find(x => true).ToEnumerable();
-            return Collection.Find<User>(x => x.UserId == userId || x.UserName == userId).ToEnumerable();
+            return Collection.Find<User>(x => x.UserId  == userId|| x.UserName == userId ).ToEnumerable();
         }
     }
 }

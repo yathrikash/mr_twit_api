@@ -56,7 +56,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IActionResult ReplyTweet(string tweetId, [FromBody]Tweet reply)
         {
             _logger.Log(LogLevel.Info, $"Request received for reply to :{tweetId} from : {reply?.UserId}");
-            _tweetService.ReplyTweet(tweetId,reply.Content);
+            _tweetService.ReplyTweet(tweetId?.ToLower(), reply.Content);
             return Ok();
         }
 
@@ -65,7 +65,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IActionResult ReplyTweetContent(string tweetId, [FromBody] Tweet reply)
         {
             _logger.Log(LogLevel.Info, $"Request received for reply to :{tweetId} from : {reply?.UserId}");
-            _tweetService.ReplyTweet(tweetId, reply.Content);
+            _tweetService.ReplyTweet(tweetId?.ToLower(), reply.Content);
             return Ok();
         }
 
@@ -85,7 +85,7 @@ namespace mr.cooper.mrtwit.api.Controllers
         public IActionResult LikeTweet(string tweetId)
         {
             _logger.Log(LogLevel.Info, $"Request received for liking tweet :{tweetId}.");
-            _tweetService.LikeTweet(tweetId);
+            _tweetService.LikeTweet(tweetId?.ToLower());
             return Ok();
         }
 
